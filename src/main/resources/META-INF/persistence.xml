@@ -14,7 +14,8 @@
             <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
             <!--A propriedade abaixo exibe os comandos SQL-->
             <property name="hibernate.show_sql" value="true"/>
-            <!--<property name="hibernate.format_sql" value="true"/>-->
+            <!--Indenta a Query SQL gerado pelo Hibernate-->
+            <property name="hibernate.format_sql" value="true"/>
             <!--A propriedade abaixo cria a tabela, colunas e registros caso não existam-->
             <property name="hibernate.hbm2ddl.auto" value="update"/>
         </properties>
