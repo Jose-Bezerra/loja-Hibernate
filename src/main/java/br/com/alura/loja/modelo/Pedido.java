@@ -13,11 +13,12 @@ public class Pedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "valor_total")
     private BigDecimal valorTotal;// A JPA entende o camelCase como underline no BD
     private LocalDate data = LocalDate.now();
     @ManyToOne //relacionamento entre entidades  - muitos pedidos para um cliente
     private Cliente cliente;
-    @OneToMany(mappedBy = "pedido")
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
     private List<ItemPedido> itens = new ArrayList<>(); //boa prática - iniciar a lista
 
     public Pedido() {
