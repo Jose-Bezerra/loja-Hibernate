@@ -27,6 +27,8 @@ public class CadastroDePedido {
         PedidoDAO pedidoDAO = new PedidoDAO(entityManager);
         pedidoDAO.cadastrar(pedido);
         entityManager.getTransaction().commit();
+         BigDecimal totalVendido = pedidoDAO.valorTotalVendido();
+        System.out.println("Valor Total: " + totalVendido);
     }
 
     public static void popularBancoDeDados() {

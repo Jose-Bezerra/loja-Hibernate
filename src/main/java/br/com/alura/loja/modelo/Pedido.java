@@ -14,7 +14,7 @@ public class Pedido {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "valor_total")
-    private BigDecimal valorTotal;// A JPA entende o camelCase como underline no BD
+    private BigDecimal valorTotal = BigDecimal.ZERO;// A JPA entende o camelCase como underline no BD
     private LocalDate data = LocalDate.now();
     @ManyToOne //relacionamento entre entidades  - muitos pedidos para um cliente
     private Cliente cliente;
@@ -63,5 +63,6 @@ public class Pedido {
     public void adicionarItem(ItemPedido item) {
         item.setPedido(this); //O item conhece o pedido
         this.itens.add(item);//O pedido conhece o item (lista)
+        this.valorTotal = this.valorTotal.add(item.getValor());
     }
 }
